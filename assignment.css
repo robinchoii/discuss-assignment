@@ -1,0 +1,15 @@
+#question {
+  /*background-color: blue;*/
+  height: 300px;
+  width: 300px;
+/*  position: relative;*/
+
+}
+
+#answer {
+  height: 300px;
+  width: 300px;
+  /*position: absolute;*/
+  /*background-color: green;*/
+
+}

@@ -10,10 +10,25 @@ $(document).ready(function() {
   ]
   console.log(listOfQuestions);
 
-  tbody = $("tbody")
-  var tr = $("<tr></tr>").appendTo(tbody)
-  tr.append("<td>1</td>")
-  tr.append("<td>2</td>")
-  tr.append("<td>3</td>")
-  tr.append("<td>4</td>")
+  for(var i = 1; i <= listOfQuestions.length; i++) {
+    var tbody = $("tbody")
+    var tr = $("<tr></tr>").appendTo(tbody);
+    tr.append("<td>" + i + "</td>");
+    tr.append("<td>" + listOfQuestions[i-1].question+ "</td>")
+    tr.append("<td>" + "<button class='btn btn-info'>Edit</button>"+ "</td>")
+    tr.append("<td>" + "<button class='btn btn-info'>Delete</button>"+ "</td>")
+
+  };
+
+
+
+
+
+
+
+
+
+
+
+
 });

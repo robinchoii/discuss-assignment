@@ -16,7 +16,7 @@ $(document).ready(function() {
     tr.append("<td>" + i + "</td>");
     tr.append("<td>" + listOfQuestions[i-1].question+ "</td>")
     tr.append("<td>" + "<button class='btn btn-info'>Edit</button>"+ "</td>")
-    tr.append("<td>" + "<button class='btn btn-info'>Delete</button>"+ "</td>")
+    tr.append("<td>" + "<button class='btn btn-danger'>Delete</button>"+ "</td>")
 
   };
 

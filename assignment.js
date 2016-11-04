@@ -2,13 +2,16 @@ $(document).ready(function() {
   console.log('im ready!')
   $('form').hide()
   $('#cancelButton').hide()
+  $('#saveButton').hide()
+  $( "tbody" ).sortable();
+  $( "tbody" ).disableSelection();
 
   var listOfQuestions = [
-    {id: '1', question: "Question 1", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {id: '2', question: "Question 2", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {id: '3', question: "Question 3", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {id: '4', question: "Question 4", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {id: '5', question: "Question 5", answers: [], options: [], shuffle: false, noneOfTheAbove: false}
+    {id: '1', question: "Question 1", answers: [], shuffle: false, noneOfTheAbove: false},
+    {id: '2', question: "Question 2", answers: [], shuffle: false, noneOfTheAbove: false},
+    {id: '3', question: "Question 3", answers: [], shuffle: false, noneOfTheAbove: false},
+    {id: '4', question: "Question 4", answers: [], shuffle: false, noneOfTheAbove: false},
+    {id: '5', question: "Question 5", answers: [], shuffle: false, noneOfTheAbove: false}
   ]
   // console.log(listOfQuestions);
 
@@ -22,25 +25,35 @@ $(document).ready(function() {
     tr.attr('id','row'+i)
   };
 
-
-
   $("#newQuestionButton").on('click', function() {
     $('form').slideDown(500);
+    $('#newQuestionButton').hide(500)
     $('#cancelButton').fadeIn(500);
   });
+
   $("#cancelButton").on("click", function() {
     $('#questionForm')[0].reset();
-    $('#cancelButton').hide()
+    $('#cancelButton').hide(500)
+    $('#saveButton').hide(500)
+    $('#newQuestionButton').show(500)
     $('form').slideUp(500);
   });
+
   $(".table").on('click', '#editButton', function() {
-    console.log('edit')
+    var id = $(this).parent().parent()
+    console.log(id)
+
+    $('#newQuestionButton').hide(500)
+    $('#cancelButton').show(500)
+    $('#saveButton').show(500)
+    $('#submitButton').hide(500)
     $('form').slideDown(500)
   });
   $(".table").on('click', '#deleteButton',function() {
     $(this).parent().parent().remove();
     deleteQuestion()
   });
+
   $("#addAnswerButton").on("click", function(e) {
     e.preventDefault();
     var answerRow = $('#answerRow')
@@ -52,11 +65,13 @@ $(document).ready(function() {
     // console.log(test1)
     console.log("add a new answer");
   });
-  $("#submitQuestionButton").on("click", function() {
+
+  $("#submitButton").on("click", function() {
     console.log('submit!');
     console.log(listOfQuestions);
     newQuestion();
-    $('#cancelButton').hide()
+    $('#cancelButton').hide(500)
+    $('#newQuestionButton').show(500)
   });
 
   function deleteQuestion(question) {

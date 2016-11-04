@@ -4,6 +4,8 @@
   <title>Discuss Assignment</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src='assignment.js'></script>
+  <script src='jquery-sortable.js'></script>
+  <script src='jquery-ui.min.js'></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link rel='stylesheet' type='text/css' href='stylesheets/assignment.css'>
@@ -14,8 +16,8 @@
       <div class='col-md-8 col-md-offset-2'>
         <table class='table table-striped table-responsive table-hover'>
           <thead>
-            <tr>
-              <th>#</th>
+            <tr class='example'>
+              <th></th>
               <th>Question</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -27,11 +29,11 @@
       </div>
       <button class='btn btn-primary col-md-8 col-md-offset-2' id='newQuestionButton'>Add a question</button>
       <button class='btn btn-danger col-md-8 col-md-offset-2' id='cancelButton'>Cancel</button>
+      <button class='btn btn-success col-md-8 col-md-offset-2' id='saveButton'>Save</button>
     </div><!-- questionRow close-->
 
     <div class='row formRow'>
       <form class='form col-md-8 col-md-offset-2' id="questionForm" name="questionForm" role='form'>
-        <h3 class='text-center'>New Question Form</h3>
         <div>
           <input type="hidden" name="id" value=''>
         </div>
@@ -42,7 +44,7 @@
         </div>
 
         <div class='form-group col-md-8 col-md-offset-2' id="answerRow">
-          <h3> Recruited Respondent Options: </h3>
+          <label> Recruited Respondent Options: </label>
           <select name='options' class='form-control'>
             <option value="may-select">May Select</option>
             <option value="must-select">Must Select</option>
@@ -55,7 +57,7 @@
           <button id="addAnswerButton"class='btn btn-info'>Add an answer</button><br>
           <label> Allow "None of the above" <input name='noneOfTheAbove'type='checkbox' value='false'></label><br>
           <label> Shuffle options order <input name='shuffle' type='checkbox' value='false'> </label><br>
-          <button type='button' id="submitQuestionButton" class='btn btn-success'>Submit</button>
+          <button type='button' id="submitButton" class='btn btn-success'>Submit</button>
         </div>
       </form>
     </div><!-- formRow close-->

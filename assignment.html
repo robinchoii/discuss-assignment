@@ -1,97 +1,63 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Discuss.io Assignment</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discuss Assignment</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src='assignment.js'></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel='stylesheet' type='text/css' href='assignment.css'>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel='stylesheet' type='text/css' href='stylesheets/assignment.css'>
 </head>
-
 <body>
   <div class='container'>
-    <div class='row questionList'>
-      <table class='table border='1'>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Qustion</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody id='tableBody'>
-        </tbody>
-      </table>
-    </div>
+    <div class='row questionsRow'>
+      <div class='table-striped table-bordered table-responsive col-md-8 col-md-offset-2'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <button class='btn btn-primary col-md-8 col-md-offset-2' id='newQuestionButton'>Add a question</button>
+      <button class='btn btn-danger col-md-8 col-md-offset-2' id='cancelButton'>Cancel</button>
+    </div><!-- questionRow close-->
 
-    <div class='row'>
-      <form class='col-md-8 col-md-offset-2 form' name='questionInfo'>
-        <div class='col-md-12 form-group' id="formQuestion">
-          <label>Question: </label><textarea class='form-control' name="question" rows='2' cols='10'></textarea>
+    <div class='row formRow'>
+      <form class='form col-md-8 col-md-offset-2' id="questionForm" name="questionForm" role='form'>
+        <h3 class='text-center'>New Question Form</h3>
+
+        <div class='form-group col-md-8 col-md-offset-2'>
+          <label>Question: </label>
+          <textarea name='question' class='form-control' placeholder="Enter your question here"></textarea>
         </div>
 
-        <div class='col-md-12' id='formAnswer' >
-          <label>Options:</label>
-          <select class='form-control' name="options[]">
-            <option value='may-select'>May Select</option>
-            <option value='must-select'>Must Select</option>
-            <option value='terminate-if-select'>Terminate if Select</option>
+        <div class='form-group col-md-8 col-md-offset-2' id="answerRow">
+          <h3> Recruited Respondent Options: </h3>
+          <select name='options' class='form-control'>
+            <option value="may-select">May Select</option>
+            <option value="must-select">Must Select</option>
+            <option value="terminate-if-select">Terminate if Select</option>
           </select>
-          <textarea class='form-control' name="answers[]" placeholder="Enter answer option"></textarea>
+          <textarea id="answer" name='answers' class='form-control' placeholder='Enter your answer'></textarea>
         </div>
 
-        <div class='form-group col-md-12 text-right' id='formOption'>
-            <div class='col-md-12'>
-              <label>Allow "None of the above" <input type='checkbox' name='none-of-the-above'></label>
-            </div>
-
-            <div class='col-md-12'>
-              <label>Shuffle option order <input type='checkbox' name='shuffle'></label>
-            </div>
-          </div>
-
-          <div class='form-group col-md-6'>
-            <input id="addAnswer" placeholder="Click to add Option" class='form-control'>
-          </div>
-
-          <div class='form-group col-md-4'>
-            <input id="questionSubmit" class='btn btn-primary' type='button' value="submit">
-          </div>
-<!--         <div class='col-md-12'>
-          <input id="addAnswer" placeholder="Click to add Option" class='form-control'>
-        </div> -->
+        <div class='form-group col-md-8 col-md-offset-2' id="optionRow">
+          <button id="addAnswerButton"class='btn btn-info'>Add an answer</button><br>
+          <label> Allow "None of the above" <input name='noneOfTheAbove'type='checkbox' value='false'></label><br>
+          <label> Shuffle options order <input name='shuffle' type='checkbox' value='false'> </label><br>
+          <button type='button' id="submitQuestionButton" class='btn btn-success'>Submit</button>
+        </div>
       </form>
+    </div><!-- formRow close-->
 
-    </div>
-
-
-      <button class='btn btn-info' id='newQuestion'>Add a Question</button>
-      <button class='btn btn-danger' id='cancel'>Cancel</button>
-      <button class='btn btn-primary back-button' >Back</button>
-      <button class='btn btn-success next-button' >Next</button>
-
-  </div> <!-- container -->
+  </div> <!-- container close-->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

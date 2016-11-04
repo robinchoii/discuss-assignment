@@ -62,8 +62,13 @@ $(document).ready(function() {
     options.append("<option value='must-select'>Must Select</option>")
     options.append("<option value='terminate-if-select'>Terminate if Select</option>")
     var answerbox = $("<textarea name='answers' class='form-control' id='answer' placeholder='Enter your answer'></textarea").appendTo(answerRow)
-    // console.log(test1)
+    var trash = $("<a id='deleteOption'><span class='glyphicon glyphicon-trash'></span></a>").appendTo(answerRow)
     console.log("add a new answer");
+  });
+
+  $("#answerRow").on('click', '#deleteOption', function() {
+    console.log('delete option')
+    $(this).siblings().remove();
   });
 
   $("#submitButton").on("click", function() {

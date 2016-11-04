@@ -25,35 +25,34 @@
           </tbody>
         </table>
       </div>
-      <button class='btn btn-primary col-md-8 col-md-offset-2'>Add a Question</button>
+      <button class='btn btn-primary col-md-8 col-md-offset-2' id='newQuestionButton'>Add a question</button>
+      <button class='btn btn-danger col-md-8 col-md-offset-2' id='cancelButton'>Cancel</button>
     </div><!-- questionRow close-->
 
     <div class='row formRow'>
-      <form class='form col-md-8 col-md-offset-2' role='form'>
+      <form class='form col-md-8 col-md-offset-2' id="questionForm" name="questionForm" role='form'>
         <h3 class='text-center'>New Question Form</h3>
 
         <div class='form-group col-md-8 col-md-offset-2'>
           <label>Question: </label>
-          <textarea class='form-control' placeholder="Enter your question here"></textarea>
+          <textarea name='question' class='form-control' placeholder="Enter your question here"></textarea>
         </div>
 
         <div class='form-group col-md-8 col-md-offset-2'>
-          <select class='form-control'>
+          <select name='option[]' class='form-control'>
             <option value="may-select">May Select</option>
             <option value="must-select">Must Select</option>
             <option value="terminate-if-select">Terminate if Select</option>
           </select>
-          <textarea class='form-control'></textarea>
+          <textarea name='answers[]' class='form-control'></textarea>
         </div>
 
         <div class='form-group col-md-8 col-md-offset-2'>
-          <button class='btn btn-info'>Click to add Answer</button><br>
-          <label> Allow "None of the above" <input type='checkbox'></label><br>
-          <label> Shuffle options order <input type='checkbox'> </label><br>
-          <button class='btn btn-success'>Submit</button>
+          <button id="addAnswerButton"class='btn btn-info'>Add an answer</button><br>
+          <label> Allow "None of the above" <input name='noneOfTheAbove'type='checkbox' value='false'></label><br>
+          <label> Shuffle options order <input name='shuffle' type='checkbox' value='false'> </label><br>
+          <button type='button' id="submitQuestionButton" class='btn btn-success'>Submit</button>
         </div>
-        <div></div>
-        <div></div>
       </form>
     </div><!-- formRow close-->
 

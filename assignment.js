@@ -17,8 +17,8 @@ $(document).ready(function() {
     var tr = $("<tr></tr>").appendTo(tbody);
     tr.append("<td>" + i + "</td>");
     tr.append("<td>" + listOfQuestions[i-1].question+ "</td>")
-    tr.append("<td>" + "<button id='editButton' class='btn btn-info'>Edit</button>"+ "</td>")
-    tr.append("<td>" + "<button id='deleteButton' class='btn btn-danger'>Delete</button>"+ "</td>")
+    tr.append("<td>" + "<button id='editButton' class='btn btn-info'><span class='glyphicon glyphicon-pencil'></span></button>"+ "</td>")
+    tr.append("<td>" + "<button id='deleteButton' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></button>"+ "</td>")
     tr.attr('id','row'+i)
   };
 
@@ -33,12 +33,13 @@ $(document).ready(function() {
     $('#cancelButton').hide()
     $('form').slideUp(500);
   });
-  $("#editButton").click(function() {
+  $(".table").on('click', '#editButton', function() {
     console.log('edit')
     $('form').slideDown(500)
   });
-  $(".table").on('click', 'button',function() {
+  $(".table").on('click', '#deleteButton',function() {
     $(this).parent().parent().remove();
+    deleteQuestion()
   });
   $("#addAnswerButton").on("click", function(e) {
     e.preventDefault();
@@ -57,9 +58,16 @@ $(document).ready(function() {
     newQuestion();
     $('#cancelButton').hide()
   });
-  function deleteQuestion() {
 
+  function deleteQuestion(question) {
+    var question = {};
+    question.id = (listOfQuestions.length+1)
+
+    var index = listOfQuestions.indexOf(question.id)
+    listOfQuestions.splice(index, 1);
+    console.log(listOfQuestions)
   };
+
   function newQuestion() {
     var question = {};
     var options = document.getElementsByName('options');
@@ -95,8 +103,8 @@ $(document).ready(function() {
     var tr = $("<tr></tr>").appendTo(tbody);
     tr.append("<td>" + listOfQuestions.length + "</td>");
     tr.append("<td>" + question.question+ "</td>")
-    tr.append("<td>" + "<button class='btn btn-info'>Edit</button>"+ "</td>")
-    tr.append("<td>" + "<button class='btn btn-danger'>Delete</button>"+ "</td>")
+    tr.append("<td>" + "<button id='editButton'class='btn btn-info'><span class='glyphicon glyphicon-pencil'></span></button>"+ "</td>")
+    tr.append("<td>" + "<button id='deleteButton'class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></button>"+ "</td>")
 
     tr.attr('id', 'row'+(listOfQuestions.length+1))
 

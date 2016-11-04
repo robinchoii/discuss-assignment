@@ -14,5 +14,11 @@ drag/drop - functional but the question number is not updating.
 
 delete option - currently deletes all options, needed a little more time of figure out just one option.  What I would have done. Give each option and unique id and then use jquery to target that element and remove.
 
+write a function to shuffle the answers
 
+write a function to add a none of the above to answers
+
+some validations need to be done:
+- cannot submit a question if question is blank.
+- once a edit or add a question button is click, all other buttons are inactive
 

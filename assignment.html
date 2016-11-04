@@ -38,24 +38,17 @@
           <textarea name='question' class='form-control' placeholder="Enter your question here"></textarea>
         </div>
 
-        <div class='form-group col-md-8 col-md-offset-2'>
+        <div class='form-group col-md-8 col-md-offset-2' id="answerRow">
+          <h3> Recruited Respondent Options: </h3>
           <select name='options' class='form-control'>
             <option value="may-select">May Select</option>
             <option value="must-select">Must Select</option>
             <option value="terminate-if-select">Terminate if Select</option>
           </select>
-          <textarea id="an1" name='answers' class='form-control'></textarea>
-        </div>
-        <div class='form-group col-md-8 col-md-offset-2'>
-          <select name='options' class='form-control'>
-            <option value="may-select">May Select</option>
-            <option value="must-select">Must Select</option>
-            <option value="terminate-if-select">Terminate if Select</option>
-          </select>
-          <textarea name='answers' class='form-control'></textarea>
+          <textarea id="answer" name='answers' class='form-control' placeholder='Enter your answer'></textarea>
         </div>
 
-        <div class='form-group col-md-8 col-md-offset-2'>
+        <div class='form-group col-md-8 col-md-offset-2' id="optionRow">
           <button id="addAnswerButton"class='btn btn-info'>Add an answer</button><br>
           <label> Allow "None of the above" <input name='noneOfTheAbove'type='checkbox' value='false'></label><br>
           <label> Shuffle options order <input name='shuffle' type='checkbox' value='false'> </label><br>

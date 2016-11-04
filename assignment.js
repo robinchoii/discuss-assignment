@@ -32,6 +32,13 @@ $(document).ready(function() {
   });
   $("#addAnswerButton").on("click", function(e) {
     e.preventDefault();
+    var answerRow = $('#answerRow')
+    var options = $("<select name='options' class='form-control'></select>").appendTo(answerRow)
+    options.append("<option value='may-select'>May Select</option>")
+    options.append("<option value='must-select'>Must Select</option>")
+    options.append("<option value='terminate-if-select'>Terminate if Select</option>")
+    var answerbox = $("<textarea name='answers' class='form-control' id='answer' placeholder='Enter your answer'></textarea").appendTo(answerRow)
+    // console.log(test1)
     console.log("add a new answer");
   });
   $("#submitQuestionButton").on("click", function() {
@@ -47,7 +54,7 @@ $(document).ready(function() {
     var answersArray = document.getElementsByName('answers');
     var finalAnswer = []
 
-    //creating answer object
+    //creating answer object then push to array
     for (var index = 0; index < options.length; index++) {
       answer[options[index].value] = answersArray[index].value
       finalAnswer.push(answer)
@@ -76,17 +83,5 @@ $(document).ready(function() {
     $('form').slideUp(500)
     $('#questionForm')[0].reset()
   };
-
-
-
-
-
-
-
-
-
-
-
-
 
 });

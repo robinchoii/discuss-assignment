@@ -42,13 +42,19 @@ $(document).ready(function() {
 
   function newQuestion() {
     var question = {};
-    question.question = document.questionForm.question.value;
-    question.answers = {
-      'must-select': 'answer1',
+    var options = document.getElementsByName('options');
+    var answer = {};
+    var answersArray = document.getElementsByName('answers');
+    var finalAnswer = []
 
-      'may-select': 'answer2',
-      'teriminate-if-select': 'answer3'
-    };
+    //creating answer object
+    for (var index = 0; index < options.length; index++) {
+      answer[options[index].value] = answersArray[index].value
+      finalAnswer.push(answer)
+    }
+
+    question.question = document.questionForm.question.value
+    question.answers = finalAnswer
     if ($("input[name='noneOfTheAbove']").is(':checked')) {
       question.noneOfTheAbove = true;
     } else {
@@ -59,8 +65,6 @@ $(document).ready(function() {
     } else {
       question.shuffle = false;
     };
-
-    // console.log(question)
 
     var tbody = $("tbody")
     var tr = $("<tr></tr>").appendTo(tbody);

@@ -4,22 +4,25 @@ $(document).ready(function() {
   $('#cancelButton').hide()
 
   var listOfQuestions = [
-    {question: "Question 1", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {question: "Question 2", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {question: "Question 3", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {question: "Question 4", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
-    {question: "Question 5", answers: [], options: [], shuffle: false, noneOfTheAbove: false}
+    {id: '1', question: "Question 1", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
+    {id: '2', question: "Question 2", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
+    {id: '3', question: "Question 3", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
+    {id: '4', question: "Question 4", answers: [], options: [], shuffle: false, noneOfTheAbove: false},
+    {id: '5', question: "Question 5", answers: [], options: [], shuffle: false, noneOfTheAbove: false}
   ]
-  console.log(listOfQuestions);
+  // console.log(listOfQuestions);
 
   for(var i = 1; i <= listOfQuestions.length; i++) {
     var tbody = $("tbody")
     var tr = $("<tr></tr>").appendTo(tbody);
     tr.append("<td>" + i + "</td>");
     tr.append("<td>" + listOfQuestions[i-1].question+ "</td>")
-    tr.append("<td>" + "<button class='btn btn-info'>Edit</button>"+ "</td>")
-    tr.append("<td>" + "<button class='btn btn-danger'>Delete</button>"+ "</td>")
+    tr.append("<td>" + "<button id='editButton' class='btn btn-info'>Edit</button>"+ "</td>")
+    tr.append("<td>" + "<button id='deleteButton' class='btn btn-danger'>Delete</button>"+ "</td>")
+    tr.attr('id','row'+i)
   };
+
+
 
   $("#newQuestionButton").on('click', function() {
     $('form').slideDown(500);
@@ -29,6 +32,13 @@ $(document).ready(function() {
     $('#questionForm')[0].reset();
     $('#cancelButton').hide()
     $('form').slideUp(500);
+  });
+  $("#editButton").click(function() {
+    console.log('edit')
+    $('form').slideDown(500)
+  });
+  $(".table").on('click', 'button',function() {
+    $(this).parent().parent().remove();
   });
   $("#addAnswerButton").on("click", function(e) {
     e.preventDefault();
@@ -43,10 +53,13 @@ $(document).ready(function() {
   });
   $("#submitQuestionButton").on("click", function() {
     console.log('submit!');
+    console.log(listOfQuestions);
     newQuestion();
     $('#cancelButton').hide()
   });
+  function deleteQuestion() {
 
+  };
   function newQuestion() {
     var question = {};
     var options = document.getElementsByName('options');
@@ -60,6 +73,7 @@ $(document).ready(function() {
       finalAnswer.push(answer)
     }
 
+    question.id = (listOfQuestions.length+1)
     question.question = document.questionForm.question.value
     question.answers = finalAnswer
     if ($("input[name='noneOfTheAbove']").is(':checked')) {
@@ -72,6 +86,10 @@ $(document).ready(function() {
     } else {
       question.shuffle = false;
     };
+    listOfQuestions.push(question)
+    console.log(question)
+    console.log(listOfQuestions)
+
 
     var tbody = $("tbody")
     var tr = $("<tr></tr>").appendTo(tbody);
@@ -79,6 +97,8 @@ $(document).ready(function() {
     tr.append("<td>" + question.question+ "</td>")
     tr.append("<td>" + "<button class='btn btn-info'>Edit</button>"+ "</td>")
     tr.append("<td>" + "<button class='btn btn-danger'>Delete</button>"+ "</td>")
+
+    tr.attr('id', 'row'+(listOfQuestions.length+1))
 
     $('form').slideUp(500)
     $('#questionForm')[0].reset()
